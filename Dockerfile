@@ -16,9 +16,9 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
 # STAGE 2: BUILD IMAGE
 FROM scratch
 
-COPY --from=build /service/auth-service ./page-service
+COPY --from=build /service/auth-service ./auth-service
 EXPOSE 7088
-ENTRYPOINT ["/page-service"]
+ENTRYPOINT ["/auth-service"]
 
 # STAGE 3: COPY CONFIG APP
 COPY config ./config
