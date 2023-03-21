@@ -9,6 +9,7 @@ RUN go mod download
 
 COPY api ./api
 COPY internals ./internals
+COPY config ./config
 COPY main.go ./
 
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
@@ -18,7 +19,4 @@ FROM scratch
 
 COPY --from=build /service/security-service ./security-service
 EXPOSE 7088
-ENTRYPOINT ["/auth-service"]
-
-# STAGE 3: COPY CONFIG APP
-COPY config ./config
+ENTRYPOINT ["/security-service"]
