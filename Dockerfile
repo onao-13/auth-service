@@ -16,7 +16,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
 # STAGE 2: BUILD IMAGE
 FROM scratch
 
-COPY --from=build /service/auth-service ./auth-service
+COPY --from=build /service/security-service ./security-service
 EXPOSE 7088
 ENTRYPOINT ["/auth-service"]
 
