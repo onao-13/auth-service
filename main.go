@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	cfg := conf.UploadDev()
+	cfg := conf.UploadProd()
 	ctx := context.Background()
 
 	srv := server.New(cfg, ctx)
